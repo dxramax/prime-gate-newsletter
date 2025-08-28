@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP System Downtime Notice - Prime Gate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 10px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .alert-header {
+            color: #4a148c;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .notice-section {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+            align-items: stretch;
+        }
+
+        .notice-en {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notice-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .greeting {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .greeting-en {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .greeting-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+            padding-left: 20px;
+        }
+
+        .downtime-window {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #856404;
+            position: relative;
+        }
+
+        .downtime-window::before {
+            content: '⚠️';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 1.5em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+            border: 1px solid #d1c4e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-box::before {
+            display: none;
+        }
+
+        .highlight-box h3 {
+            color: #4a148c;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .content-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-list h3 {
+            color: #4a148c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 8px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        .content-list li::before {
+            content: '▸';
+            color: #6a1b9a;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .content-list.english li {
+            padding-left: 20px;
+            padding-right: 0;
+        }
+
+        .footer {
+            background: #4a148c;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-en {
+            text-align: left;
+        }
+
+        .footer-ar {
+            text-align: right;
+            direction: rtl;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .notice-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .greeting {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">PRIME GATE</div>
+            <div class="subtitle">IT Department - System Maintenance Notice</div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Alert Header -->
+            <div class="alert-header">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                    <div style="flex: 1; text-align: left;">
+                        <span class="emoji">⚠️</span>IMPORTANT NOTICE: ERP SYSTEM DOWNTIME
+                    </div>
+                    <div style="flex: 1; text-align: right; direction: rtl;">
+                        إشعار مهم: تحديث النظام<span class="emoji">⚠️</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Greeting -->
+            <div class="greeting">
+                <div class="greeting-en">
+                    <strong>Dear Colleagues,</strong>
+                </div>
+                <div class="greeting-ar">
+                    <strong>زملاؤنا الأعزاء،</strong>
+                </div>
+            </div>
+
+            <!-- Downtime Window -->
+            <div class="downtime-window">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                    <div style="flex: 1; text-align: left;">
+                        <strong>DOWNTIME WINDOW:</strong><br>
+                        August 24th 7:00 PM - August 25th 4:00 AM
+                    </div>
+                    <div style="flex: 1; text-align: right; direction: rtl;">
+                        <strong>فترة التوقف:</strong><br>
+                        24 أغسطس 7:00 مساءً - 25 أغسطس 4:00 صباحاً
+                    </div>
+                </div>
+            </div>
+
+            <!-- First Row - Update Notice -->
+            <div class="notice-section">
+                <div class="notice-en">
+                    <div class="highlight-box">
+                        <h3>Important System Update:</h3>
+                        <p>Please be advised that our ERP system will be undergoing an important update today to add
+                            advanced analytics capabilities, business intelligence features, and extra functionality,
+                            and will be unavailable during the
+                            specified time period.</p>
+                        <p>This update will enhance the system with powerful analytics, business intelligence tools, and
+                            additional
+                            functionality to provide better insights and comprehensive reporting capabilities for all
+                            users.</p>
+                    </div>
+                </div>
+
+                <div class="notice-ar">
+                    <div class="highlight-box">
+                        <h3>تحديث مهم للنظام:</h3>
+                        <p>يُرجى العلم بأن نظام تخطيط موارد المؤسسة (ERP) سيخضع لتحديث مهم اليوم لإضافة قدرات التحليل
+                            المتقدمة وذكاء الأعمال والمزيد من الوظائف، وسيكون غير متاح خلال الفترة المحددة.</p>
+                        <p>سيعزز هذا التحديث النظام بميزات تحليلية قوية وأدوات ذكاء الأعمال ووظائف إضافية لتوفير رؤى
+                            أفضل وقدرات تقارير
+                            شاملة لجميع المستخدمين.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row - During Update -->
+            <div class="notice-section">
+                <div class="notice-en">
+                    <div class="content-list english">
+                        <h3>During Update:</h3>
+                        <ul>
+                            <li>Most ERP functions may be inaccessible</li>
+                            <li>Data entry and retrieval might not be possible</li>
+                            <li>Some reports may not be generated</li>
+                            <li>Please complete any urgent ERP tasks before 7:00 PM today</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="notice-ar">
+                    <div class="content-list">
+                        <h3>خلال فترة التحديث:</h3>
+                        <ul>
+                            <li>معظم وظائف نظام تخطيط موارد المؤسسة قد تكون غير متاحة</li>
+                            <li>إدخال واسترجاع البيانات قد لا يكون ممكناً</li>
+                            <li>بعض التقارير قد لا يمكن إنشاؤها</li>
+                            <li>يُرجى إكمال أي مهام عاجلة في النظام قبل الساعة 7:00 مساءً اليوم</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Row - Contact Info -->
+            <div class="notice-section">
+                <div class="notice-en">
+                    <div class="highlight-box">
+                        <p>We apologize for any inconvenience this may cause and appreciate your understanding as we
+                            work to improve system performance.</p>
+                        <p><strong>If you need urgent and important work during this time, please coordinate with IT
+                                Support.</strong></p>
+                        <p><strong>For any technical support during this time, please contact IT Support:</strong><br>
+                            erp-support@primegate.net.sa</p>
+                        <p><strong>Thank you for your cooperation.</strong></p>
+                    </div>
+                </div>
+
+                <div class="notice-ar">
+                    <div class="highlight-box">
+                        <p>نعتذر عن أي إزعاج قد يسببه هذا الأمر ونقدر تفهمكم بينما نعمل على تحسين أداء النظام.</p>
+                        <p><strong>إذا كنتم بحاجة لعمل عاجل ومهم خلال هذا الوقت، يُرجى التنسيق مع دعم تقنية
+                                المعلومات.</strong></p>
+                        <p><strong>لأي دعم تقني خلال هذا الوقت، يُرجى الاتصال بدعم تقنية المعلومات:</strong><br>
+                            erp-support@primegate.net.sa</p>
+                        <p><strong>شكراً لتعاونكم.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-en">
+                    <div><strong>Best regards,</strong></div>
+                    <div>IT Department</div>
+                    <div>Prime Gate</div>
+                </div>
+                <div class="footer-ar">
+                    <div><strong>مع خالص التقدير،</strong></div>
+                    <div>قسم تقنية المعلومات</div>
+                    <div>برايم جيت</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
