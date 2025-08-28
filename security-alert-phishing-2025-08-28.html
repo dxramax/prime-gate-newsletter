@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Alert - Phishing Warning - Prime Gate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .header * {
+            font-family: 'Arial', sans-serif !important;
+        }
+
+        .highlight-box * {
+            font-family: 'Arial', sans-serif !important;
+        }
+
+        .alert-header * {
+            font-family: 'Arial', sans-serif !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 10px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: rgb(97, 68, 245);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .alert-header {
+            color: rgb(97, 68, 245);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .notice-section {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+            align-items: stretch;
+        }
+
+        .notice-en {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notice-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .greeting {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .greeting-en {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .greeting-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+            padding-left: 20px;
+        }
+
+        .date-section {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid rgb(97, 68, 245);
+            margin: 20px 0;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .date-en {
+            flex: 1;
+            text-align: left;
+        }
+
+        .date-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .security-alert {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 2px solid #f44336;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #c62828;
+            position: relative;
+        }
+
+        .security-alert::before {
+            content: '⚠️';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 1.5em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+            border: 1px solid #d1c4e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+
+        .highlight-box h3 {
+            color: rgb(97, 68, 245);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .spam-image-section {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .spam-image-section h2 {
+            font-size: 1.4em;
+            margin-bottom: 8px;
+            color: #856404;
+        }
+
+        .image-placeholder {
+            background: white;
+            border: 2px dashed #ffc107;
+            padding: 40px;
+            margin: 15px 0;
+            border-radius: 8px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-list h3 {
+            color: rgb(97, 68, 245);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 8px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        .content-list li::before {
+            content: '▸';
+            color: rgb(97, 68, 245);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .content-list.english li {
+            padding-left: 20px;
+            padding-right: 0;
+        }
+
+        .footer {
+            background: rgb(97, 68, 245);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-en {
+            text-align: left;
+        }
+
+        .footer-ar {
+            text-align: right;
+            direction: rtl;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .notice-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .greeting {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .date-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">PRIME GATE</div>
+            <div class="subtitle">IT Department Security Alert - Phishing Warning</div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Alert Header -->
+            <div class="alert-header">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                    <div style="flex: 1; text-align: left;">
+                        URGENT SECURITY ALERT: PHISHING EMAIL WARNING
+                    </div>
+                    <div style="flex: 1; text-align: right; direction: rtl;">
+                        تنبيه أمني عاجل: تحذير من رسائل احتيالية
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date -->
+            <div class="date-section">
+                <div class="date-en">
+                    <strong>Date:</strong> August 28th, 2025
+                </div>
+                <div class="date-ar">
+                    <strong>التاريخ:</strong> 28 أغسطس 2025
+                </div>
+            </div>
+
+            <!-- Greeting -->
+            <div class="greeting">
+                <div class="greeting-en">
+                    <strong>Dear All,</strong>
+                </div>
+                <div class="greeting-ar">
+                    <strong>تحية طيبة</strong>
+                </div>
+            </div>
+
+            <!-- Security Alert -->
+            <div class="security-alert">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+                    <div style="flex: 1; text-align: left;">
+                        <strong>DO NOT OPEN SUSPICIOUS ATTACHMENTS</strong><br>
+                        Contact IT Department Immediately
+                    </div>
+                    <div style="flex: 1; text-align: right; direction: rtl;">
+                        <strong>لا تفتح المرفقات المشبوهة</strong><br>
+                        اتصل بقسم التقنية فوراً
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Warning Section -->
+            <div class="notice-section">
+                <div class="notice-en">
+                    <div class="highlight-box">
+                        <h3>Security Alert - Phishing Email Warning:</h3>
+                        <p style="margin: 0 0 15px 0;"><strong>Dear all,</strong></p>
+                        <p style="margin: 0 0 15px 0;">If you received these email messages, please don't open the attachment and contact the IT department immediately.</p>
+                        <p style="margin: 0 0 15px 0;">We have detected malicious phishing emails being sent that may contain harmful attachments or links designed to compromise our systems.</p>
+                        <p style="margin: 0 0 15px 0;"><strong>What to do if you receive suspicious emails:</strong></p>
+                        <p style="margin: 0 0 10px 0;">• Do NOT open any attachments</p>
+                        <p style="margin: 0 0 10px 0;">• Do NOT click on any links</p>
+                        <p style="margin: 0 0 10px 0;">• Do NOT reply to the email</p>
+                        <p style="margin: 0 0 15px 0;">• Forward the email to IT Department immediately</p>
+                        <p style="margin: 0;"><strong>Contact IT Support immediately</strong></p>
+                    </div>
+                </div>
+
+                <div class="notice-ar">
+                    <div class="highlight-box">
+                        <h3>تحذير أمني - تنبيه من رسائل احتيالية:</h3>
+                        <p style="margin: 0 0 15px 0;"><strong>تحية طيبة،</strong></p>
+                        <p style="margin: 0 0 15px 0;">الزملاء الأعزاء إذا تلقيتم البريد الإلكتروني الموضح في الصورة أرجو عدم فتح الملف المرفق وإبلاغ قسم التقنية فوراً.</p>
+                        <p style="margin: 0 0 15px 0;">لقد اكتشفنا رسائل إلكترونية احتيالية ضارة يتم إرسالها قد تحتوي على مرفقات أو روابط ضارة مصممة للإضرار بأنظمتنا.</p>
+                        <p style="margin: 0 0 15px 0;"><strong>ما يجب فعله عند تلقي رسائل مشبوهة:</strong></p>
+                        <p style="margin: 0 0 10px 0;">• لا تفتح أي مرفقات</p>
+                        <p style="margin: 0 0 10px 0;">• لا تنقر على أي روابط</p>
+                        <p style="margin: 0 0 10px 0;">• لا ترد على البريد الإلكتروني</p>
+                        <p style="margin: 0 0 15px 0;">• أرسل البريد الإلكتروني لقسم تقنية المعلومات فوراً</p>
+                        <p style="margin: 0;"><strong>اتصل بالدعم التقني فوراً</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spam Example Image Section -->
+            <div class="spam-image-section">
+                <h2>Example of Phishing Email / مثال على البريد الاحتيالي</h2>
+                <div style="font-size: 1em; margin: 8px 0;">Below is an example of the suspicious email - DO NOT interact with similar emails</div>
+                <div style="font-size: 1em; margin: 8px 0; direction: rtl;">أدناه مثال على البريد المشبوه - لا تتفاعل مع رسائل مشابهة</div>
+                <div style="background: white; border: 2px dashed #ffc107; padding: 20px; margin: 15px 0; border-radius: 8px; text-align: center;">
+                    <img src="thumbnail_image001.png" alt="Example of phishing email - DO NOT interact with similar emails" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 4px; object-fit: cover; object-position: top; max-height: 50%;">
+                    <div style="margin-top: 10px; color: #856404; font-weight: bold; font-size: 0.9em;">
+                        ⚠️ Example of phishing email - DO NOT interact with similar emails<br>
+                        ⚠️ مثال على البريد الاحتيالي - لا تتفاعل مع رسائل مشابهة
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Guidelines -->
+            <div class="notice-section">
+                <div class="notice-en">
+                    <div class="content-list english">
+                        <h3>Security Guidelines:</h3>
+                        <ul>
+                            <li>Always verify the sender before opening emails</li>
+                            <li>Be suspicious of unexpected attachments or urgent requests</li>
+                            <li>When in doubt, contact IT Security team immediately</li>
+                            <li>Report any suspicious activity to IT Department immediately</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="notice-ar">
+                    <div class="content-list">
+                        <h3>إرشادات الأمان:</h3>
+                        <ul>
+                            <li>تحقق دائماً من المرسل قبل فتح الرسائل الإلكترونية</li>
+                            <li>كن مشكوكاً في المرفقات غير المتوقعة أو الطلبات العاجلة</li>
+                            <li>عند الشك، اتصل بفريق أمن تقنية المعلومات فوراً</li>
+                            <li>أبلغ عن أي نشاط مشبوه إلى قسم تقنية المعلومات فوراً</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Critical Security Reminders -->
+            <div class="notice-section">
+                <div class="notice-en">
+                    <div class="highlight-box" style="height: 276px;">
+                        <h3>Critical Security Reminders:</h3>
+                        <p style="margin: 0 0 10px 0;">• Never open attachments from unknown or suspicious senders</p>
+                        <p style="margin: 0 0 10px 0;">• Do not click on suspicious links in emails</p>
+                        <p style="margin: 0 0 15px 0;">• Always verify unusual requests by contacting the sender directly</p>
+                        <p style="margin: 0 0 15px 0;"><strong>If you suspect a phishing email, contact IT Security immediately</strong></p>
+                        <p style="margin: 0;"><strong>Your vigilance helps protect our entire organization.</strong></p>
+                    </div>
+                </div>
+
+                <div class="notice-ar">
+                    <div class="highlight-box" style="height: 276px;">
+                        <h3>تذكيرات أمنية مهمة:</h3>
+                        <p style="margin: 0 0 10px 0;">• لا تفتح أبداً المرفقات من مرسلين غير معروفين أو مشبوهين</p>
+                        <p style="margin: 0 0 10px 0;">• لا تنقر على الروابط المشبوهة في الرسائل الإلكترونية</p>
+                        <p style="margin: 0 0 15px 0;">• تحقق دائماً من الطلبات غير المعتادة عن طريق الاتصال بالمرسل مباشرة</p>
+                        <p style="margin: 0 0 15px 0;"><strong>إذا كنت تشك في وجود بريد إلكتروني احتيالي، اتصل بأمن تقنية المعلومات فوراً</strong></p>
+                        <p style="margin: 0;"><strong>يقظتكم تساعد في حماية مؤسستنا بأكملها.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-en">
+                    <div><strong>Best regards,</strong></div>
+                    <div>IT Security Team</div>
+                    <div>Prime Gate</div>
+                </div>
+                <div class="footer-ar">
+                    <div><strong>مع خالص التقدير،</strong></div>
+                    <div>فريق أمن تقنية المعلومات</div>
+                    <div>برايم جيت</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
