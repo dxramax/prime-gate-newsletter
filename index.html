@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Department Newsletter - Excel Tips</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 10px auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .greeting {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .greeting-en {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .greeting-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+            padding-left: 20px;
+        }
+
+        .subject {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #6a1b9a;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .subject-en {
+            flex: 1;
+            text-align: left;
+        }
+
+        .subject-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .intro-section {
+            display: flex;
+            gap: 30px;
+            margin: 25px 0;
+        }
+
+        .intro-en {
+            flex: 1;
+        }
+
+        .intro-ar {
+            flex: 1;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+            border: 1px solid #d1c4e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .highlight-box::before {
+            content: '📚';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 1.2em;
+        }
+
+        .video-section {
+            background: #1a237e;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .video-title {
+            font-size: 1.4em;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .video-duration {
+            font-size: 1em;
+            margin: 8px 0;
+            opacity: 0.9;
+        }
+
+        .watch-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4081 0%, #e91e63 100%);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin: 15px 0;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .watch-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+        }
+
+        .content-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .content-list h3 {
+            color: #4a148c;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-list li {
+            padding: 8px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        .content-list li::before {
+            content: '▸';
+            color: #6a1b9a;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .tips-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+            align-items: start;
+        }
+
+        .tip-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .tip-card h3 {
+            color: #4a148c;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tip-card p {
+            color: #555;
+            line-height: 1.7;
+            min-height: 80px;
+        }
+
+        .example-section {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .example-title {
+            color: #4a148c;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer {
+            background: #4a148c;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-en {
+            text-align: left;
+        }
+
+        .footer-ar {
+            text-align: right;
+            direction: rtl;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        .screenshot-img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .formula-box {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            border-left: 4px solid #4299e1;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f7fafc;
+            border-left: 4px solid #4299e1;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -15px;
+            top: 10px;
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 2px 8px rgba(66, 153, 225, 0.3);
+            border: 2px solid white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .intro-section,
+            .tips-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .greeting {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">PRIME GATE</div>
+            <div class="subtitle">IT Department Newsletter - Excel Excellence - Version Two</div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Greeting -->
+            <div class="greeting">
+                <div class="greeting-en">
+                    <strong>Dear Colleagues,</strong>
+                </div>
+                <div class="greeting-ar">
+                    <strong>زملاؤنا الأعزاء،</strong>
+                </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="subject">
+                <div class="subject-en">
+                    <strong>Subject:</strong> Master Excel: 30 Essential Tips and Tricks 📊
+                </div>
+                <div class="subject-ar">
+                    <strong>الموضوع:</strong> إتقان الإكسل: 30 تقنية ومهارة أساسية 📊
+                </div>
+            </div>
+
+            <!-- Introduction Section -->
+            <div class="intro-section">
+                <div class="intro-en">
+                    <div class="highlight-box">
+                        <h3><span class="emoji">📚</span>Introduction:</h3>
+                        <p>With daily challenges and growing data volumes, using our tools efficiently is no longer
+                            optional — it's essential.</p>
+                        <p>Microsoft Excel is more than just spreadsheets and formulas; it's a powerful platform that
+                            can enhance work quality and save valuable time when used effectively.</p>
+                        <p>In this bulletin, we share a selection of smart techniques and practical tricks to help you
+                            use Excel more professionally, supported by a comprehensive video tutorial.</p>
+                    </div>
+                </div>
+
+                <div class="intro-ar">
+                    <div class="highlight-box">
+                        <h3><span class="emoji">📚</span>مقدمة:</h3>
+                        <p>في ظل التحديات اليومية وتزايد حجم البيانات، أصبح من الضروري أن نستخدم أدواتنا بكفاءة عالية.
+                        </p>
+                        <p>برنامج Microsoft Excel ليس مجرد جداول ومعادلات، بل هو منصة متكاملة يمكنها أن ترفع من جودة
+                            العمل وتوفر الكثير من الوقت إذا تم استخدامها بشكل صحيح.</p>
+                        <p>في هذا التعميم، نشارككم مجموعة من الأساليب الذكية والتقنيات العملية التي ستساعدكم على استخدام
+                            Excel بطريقة أكثر احترافية، مدعومة بـ فيديو تعليمي شامل.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Section -->
+            <div class="video-section">
+                <h2><span class="emoji">🎥</span>Excel Basics Tutorial / فيديو الأساسيات</h2>
+                <div class="video-title">Simple Excel Tips for Beginners / نصائح بسيطة للمبتدئين</div>
+                <div class="video-duration"><span class="emoji">⏱️</span>Duration / المدة: 30 minutes / 30 دقيقة</div>
+                <a href="https://www.youtube.com/watch?v=JPzfno4ot-g" class="watch-button" target="_blank">
+                    <span class="emoji">📺</span>Watch Now / شاهد الآن
+                </a>
+            </div>
+
+            <!-- Content Lists -->
+            <div class="intro-section">
+                <div class="intro-en">
+                    <div class="content-list">
+                        <h3><span class="emoji">📌</span>What You'll Learn:</h3>
+                        <ul>
+                            <div>- Basic formatting and borders</div>
+                            <div>- Simple SUM and AVERAGE formulas</div>
+                            <div>- Creating basic charts</div>
+                            <div>- Using AutoFill for quick data entry</div>
+                            <div>- Freezing rows and columns</div>
+                            <div>- Print settings and page layout</div>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="intro-ar">
+                    <div class="content-list">
+                        <h3><span class="emoji">📌</span>محتوى الفيديو يشمل:</h3>
+                        <ul>
+                            <div>- التنسيق الأساسي والحدود</div>
+                            <div>- صيغ الجمع والمتوسط البسيطة</div>
+                            <div>- إنشاء الرسوم البيانية الأساسية</div>
+                            <div>- استخدام التعبئة التلقائية لإدخال البيانات</div>
+                            <div>- تجميد الصفوف والأعمدة</div>
+                            <div>- إعدادات الطباعة وتخطيط الصفحة</div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <h2 style="text-align: center; color: #4a148c; margin: 40px 0;">
+                <span class="emoji">💡</span>Simple Excel Tips for Everyone / نصائح بسيطة للجميع
+            </h2>
+
+            <div class="tips-section">
+                <div class="tip-card">
+                    <h3>✨ Quick AutoSum (SUM Formula):</h3>
+                    <p><strong>What it does:</strong> Automatically adds up numbers in your selected cells - no complex
+                        formulas needed!</p>
+
+                    <div class="example-section">
+                        <div class="example-title">📖 Super Easy Steps:</div>
+                        <ol class="step-list">
+                            <li><strong>Type some numbers</strong> in cells (like A1: 10, A2: 20, A3: 30)</li>
+                            <li><strong>Click on an empty cell</strong> below your numbers (like A4)</li>
+                            <li><strong>Press Alt + =</strong> on your keyboard (that's it!)</li>
+                            <li><strong>Press Enter</strong> and see the result - it shows 60!</li>
+                        </ol>
+
+                        <div class="example-title" style="margin-top: 20px;">💻 The Formula Excel Creates:</div>
+                        <div class="formula-box">=SUM(A1:A3)</div>
+
+                        <div style="background: #e8f4fd; padding: 15px; border-radius: 6px; margin: 15px 0;">
+                            <strong>💡 Why this helps:</strong> No more calculator needed! Excel does the math for you
+                            instantly.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-card" style="direction: rtl; text-align: right;">
+                    <h3>✨ الجمع التلقائي السريع:</h3>
+                    <p><strong>ما يفعله:</strong> يجمع الأرقام في الخلايا المحددة تلقائياً - بدون صيغ معقدة!</p>
+
+                    <div class="example-section" style="text-align: right;">
+                        <div class="example-title">📖 خطوات سهلة جداً:</div>
+                        <ol class="step-list" style="direction: rtl; text-align: right;">
+                            <li><strong>اكتب بعض الأرقام</strong> في الخلايا (مثل A1: 10، A2: 20، A3: 30)</li>
+                            <li><strong>انقر على خلية فارغة</strong> أسفل أرقامك (مثل A4)</li>
+                            <li><strong>اضغط Alt + =</strong> في لوحة المفاتيح (هذا كل شيء!)</li>
+                            <li><strong>اضغط Enter</strong> وشاهد النتيجة - سيظهر 60!</li>
+                        </ol>
+
+                        <div class="example-title" style="margin-top: 20px;">💻 الصيغة التي ينشئها الإكسل:</div>
+                        <div class="formula-box" style="direction: ltr; text-align: left;">=SUM(A1:A3)</div>
+
+                        <div style="background: #e8f4fd; padding: 15px; border-radius: 6px; margin: 15px 0;">
+                            <strong>� لماذا يساعد:</strong> لا حاجة للآلة الحاسبة! الإكسل يحسب لك فوراً.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🎨 Easy Cell Formatting:</h3>
+                    <p><strong>What it does:</strong> Make your data look professional with colors, borders, and bold
+                        text - just like a pro designer!</p>
+
+                    <div class="example-section">
+                        <div class="example-title">📖 Simple Steps:</div>
+                        <ol class="step-list">
+                            <li><strong>Select your cells</strong> by clicking and dragging over them</li>
+                            <li><strong>Right-click</strong> and choose "Format Cells"
+                                <img src="1.png" alt="Format Cells Dialog" class="screenshot-img">
+                            </li>
+                            <li><strong>Pick a color</strong> from the "Fill" tab (try light blue!)</li>
+                            <li><strong>Add borders</strong> from the "Border" tab</li>
+                            <li><strong>Make text bold</strong> from the "Font" tab
+                                <img src="2.png" alt="Font Formatting Options" class="screenshot-img">
+                            </li>
+                            <li><strong>Click OK</strong> and admire your beautiful spreadsheet!</li>
+                        </ol>
+
+                        <div
+                            style="background: #fff3cd; padding: 15px; border-radius: 6px; margin: 15px 0; border-left: 4px solid #ffc107;">
+                            <strong>🎯 Quick Tip:</strong> Use light colors for backgrounds so text stays readable!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip-card" style="direction: rtl; text-align: right;">
+                    <h3>🎨 تنسيق الخلايا بسهولة:</h3>
+                    <p><strong>ما يفعله:</strong> يجعل بياناتك تبدو احترافية بالألوان والحدود والخط العريض - مثل المصمم
+                        المحترف!</p>
+
+                    <div class="example-section" style="text-align: right;">
+                        <div class="example-title">📖 خطوات بسيطة:</div>
+                        <ol class="step-list" style="direction: rtl; text-align: right;">
+                            <li><strong>حدد خلاياك</strong> بالنقر والسحب عليها</li>
+                            <li><strong>انقر بالزر الأيمن</strong> واختر "تنسيق الخلايا"
+                                <img src="1.png" alt="مربع حوار تنسيق الخلايا" class="screenshot-img">
+                            </li>
+                            <li><strong>اختر لون</strong> من تبويب "التعبئة" (جرب الأزرق الفاتح!)</li>
+                            <li><strong>أضف حدود</strong> من تبويب "الحدود"</li>
+                            <li><strong>اجعل النص عريض</strong> من تبويب "الخط"
+                                <img src="2.png" alt="خيارات تنسيق الخط" class="screenshot-img">
+                            </li>
+                            <li><strong>انقر موافق</strong> واستمتع بجدولك الجميل!</li>
+                        </ol>
+
+                        <div
+                            style="background: #fff3cd; padding: 15px; border-radius: 6px; margin: 15px 0; border-right: 4px solid #ffc107;">
+                            <strong>🎯 نصيحة سريعة:</strong> استخدم ألوان فاتحة للخلفيات حتى يبقى النص واضحاً!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-en">
+                    <div><strong>Best regards,</strong></div>
+                    <div>IT Department</div>
+                    <div>Prime Gate</div>
+                </div>
+                <div class="footer-ar">
+                    <div><strong>مع خالص التقدير،</strong></div>
+                    <div>قسم تقنية المعلومات</div>
+                    <div>برايم جيت</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
